@@ -1,14 +1,11 @@
 CC=gcc
-SOURCES=single_mandelbrot multi_mandelbrot
-FILES := $(subst .c,,$(SOURCES))
-FLAGS=-g -Wall -Wvla -Werror -Wno-unused-variable -Wno-unused-but-set-variable
+CFLAGS=-g -Wall -Wvla -Werror -Wno-unused-variable -Wno-unused-but-set-variable
+LDFLAGS=-lpthread
 
-# By default, make runs the first target in the file
-all: $(FILES)
+all: thread_mandelbrot
 
-% :: %.c read_ppm.c write_ppm.c
-	$(CC) $(FLAGS) $< read_ppm.c write_ppm.c -o $@ -lpthread
+thread_mandelbrot: thread_mandelbrot.c read_ppm.c write_ppm.c
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 clean:
-	rm -rf $(FILES)
-
+	rm -f thread_mandelbrot
