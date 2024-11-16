@@ -1,14 +1,20 @@
-CC=gcc
-SOURCES=buddhabrot
-FILES := $(subst .c,,$(SOURCES))
-FLAGS=-g -Wall -Wvla -Werror -Wno-unused-variable -Wno-unused-but-set-variable
+# Compiler and Flags
+CC = gcc
+CFLAGS = -g -Wall -Wvla -Werror -Wno-unused-variable -Wno-unused-but-set-variable -lpthread
 
-# By default, make runs the first target in the file
-all: $(FILES)
+# Source Files
+SOURCES = buddhabrot.c read_ppm.c write_ppm.c
+HEADERS = read_ppm.h write_ppm.h
 
-% :: %.c read_ppm.c write_ppm.c
-	$(CC) $(FLAGS) $< read_ppm.c write_ppm.c -o $@ -lpthread
+# Target Executable
+TARGET = buddhabrot
 
+# Default Target
+all: $(TARGET)
+
+$(TARGET): $(SOURCES) $(HEADERS)
+	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET)
+
+# Clean Up
 clean:
-	rm -rf $(FILES)
-
+	rm -f $(TARGET)
