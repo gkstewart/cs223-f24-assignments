@@ -26,7 +26,7 @@ the amount of time it takes to compute each image.
 
 = Multi-process mandelbrot
 
-Run your executable, `multi_mandelbrot`, with the following sizes and record
+Run your executable, `thread_mandelbrot`, with the following sizes and record
 the amount of time it takes to compute each image.
 
 [cols="1,1"]
@@ -38,3 +38,5 @@ the amount of time it takes to compute each image.
 | 1000 | 10.1
 | 2000 | 45.2
 !===
+
+

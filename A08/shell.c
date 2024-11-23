@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -78,4 +79,9 @@ int main() {
 
     printf("exiting shell.\n");
     return 0;
+=======
+
+int main() {
+  return 0;
+>>>>>>> upstream/master
 }
